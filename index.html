@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ned Stranger - Musician, Writer, Podcaster</title>
+    <!-- Updated Font Awesome CDN link to a version that includes the Substack icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -14,6 +15,8 @@
             --color-light: #F4F4F4;
             --color-dark: #1A1A1A;
             --color-accent: #B0A175;
+            --color-red-orange: #C95738;
+            --color-dark-green: #386641;
         }
 
         * {
@@ -126,18 +129,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .streaming-links {
-            margin-top: 2rem;
-        }
-        .streaming-links a {
-            color: var(--color-light);
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-        .streaming-links a:hover {
-            color: var(--color-accent);
-        }
 
         /* --- Sections --- */
         section {
@@ -150,6 +141,66 @@
             text-align: center;
             margin-bottom: 4rem;
         }
+
+        /* --- Music Section --- */
+        .music-content {
+            text-align: center;
+        }
+        .music-content h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        .press-logo {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%; /* Creates a square aspect ratio */
+            background-color: #333;
+            border-radius: 4px;
+        }
+        .music-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .music-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .music-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .music-button.august-after {
+            background-color: var(--color-red-orange);
+            color: var(--color-light);
+        }
+        .music-button.ned-stranger {
+            background-color: var(--color-dark-green);
+            color: var(--color-light);
+        }
+
 
         /* --- Articles Section --- */
         .articles-grid {
@@ -373,6 +424,9 @@
                 width: 100%;
                 margin-bottom: 1rem;
             }
+            .press-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
         }
     </style>
 </head>
@@ -391,8 +445,8 @@
         </nav>
     </header>
 
-    <!-- Music Section with Video Background -->
-    <section class="hero" id="music">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="https://example.com/placeholder-music-video.mp4" type="video/mp4">
             <img src="https://placehold.co/1920x1080/1A1A1A/F4F4F4?text=MUSIC" alt="Placeholder image for music section">
@@ -406,6 +460,35 @@
                 <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://bandcamp.com" target="_blank"><i class="fab fa-bandcamp"></i></a>
                 <a href="https://nedstranger.substack.com" target="_blank" title="Substack Articles"><i class="fas fa-pencil-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- New Music Section -->
+    <section id="music" class="container">
+        <h2 class="section-title">Music</h2>
+        <div class="music-content">
+            <h3>Featured In:</h3>
+            <div class="press-grid">
+                <!-- 10 placeholders for press logos -->
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+                <div class="press-logo" style="background-image: url('https://placehold.co/100x100/333/666?text=LOGO');"></div>
+            </div>
+            <div class="music-buttons-grid">
+                <a href="https://www.youtube.com/augustandafter" target="_blank" class="music-button august-after">August and After: YouTube</a>
+                <a href="https://open.spotify.com/artist/7AuXlDJhnWt4NKtEwaabif?si=7532a28ac2144a68" target="_blank" class="music-button august-after">August and After: Spotify</a>
+                <a href="https://www.youtube.com/nedstranger" target="_blank" class="music-button ned-stranger">Ned Stranger: YouTube</a>
+                <a href="https://open.spotify.com/artist/4TwSn89695Yi3bo4ONWEgz?si=WHqZVZW4QtqYLdj2634Wuw" target="_blank" class="music-button ned-stranger">Ned Stranger: Spotify</a>
             </div>
         </div>
     </section>
