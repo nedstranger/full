@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ned Stranger - Musician, Writer, Podcaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --color-light: #F4F4F4;
+            --color-dark: #1A1A1A;
+            --color-accent: #B0A175;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(5px);
+            transition: background 0.3s ease;
+        }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        .hero-content p {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .streaming-links {
+            margin-top: 2rem;
+        }
+        .streaming-links a {
+            color: var(--color-light);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .streaming-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 8rem 0;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* --- Articles Section --- */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .article-card {
+            border: 1px solid rgba(244, 244, 244, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        .article-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        .article-card a {
+            font-family: var(--font-sans);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Generic Content Sections --- */
+        .content-section {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .content-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .content-text {
+            flex: 1;
+        }
+        .content-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .content-text p {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Events Section --- */
+        .events-list {
+            display: grid;
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .event-item {
+            border-bottom: 1px solid rgba(244, 244, 244, 0.1);
+            padding-bottom: 1.5rem;
+        }
+        .event-item:last-child {
+            border-bottom: none;
+        }
+        .event-item h4 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+        .event-item p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- Contact Form --- */
+        #contact {
+            text-align: center;
+        }
+        .contact-form {
+            margin-top: 2rem;
+        }
+        .contact-form form {
+            display: inline-block;
+            text-align: left;
+        }
+        .contact-form input {
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--color-light);
+            color: var(--color-light);
+            padding: 0.5rem;
+            margin: 0 0.5rem 1rem 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            width: 250px;
+        }
+        .contact-form input::placeholder {
+            color: rgba(244, 244, 244, 0.5);
+        }
+        .button {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--color-light);
+            color: var(--color-light);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            overflow: hidden;
+            transition: color 0.3s;
+        }
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 244, 244, 0.1);
+            transform: skewX(-30deg);
+            transition: left 0.5s ease;
+        }
+        .button:hover::before {
+            left: 100%;
+            animation: shine 1.5s infinite;
+        }
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        .button:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+        .contact-form button {
+            background: var(--color-light);
+            color: var(--color-dark);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: var(--color-accent);
+            color: var(--color-light);
+        }
+
+        /* --- Horizontal rule --- */
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(244, 244, 244, 0.1);
+            margin: 4rem auto;
+            width: 50%;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(244, 244, 244, 0.1);
+        }
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .content-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .content-section.reverse {
+                flex-direction: column;
+            }
+            header {
+                padding: 1rem;
+            }
+            nav {
+                display: none;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .contact-form form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-form input {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Ned Stranger</div>
+        <nav>
+            <a href="#music">Music</a>
+            <a href="#articles">Articles</a>
+            <a href="#book">Book</a>
+            <a href="#podcast">Podcast</a>
+            <a href="#events">Events</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="button">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Music Section with Video Background -->
+    <section class="hero" id="music">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://example.com/placeholder-music-video.mp4" type="video/mp4">
+            <img src="https://placehold.co/1920x1080/1A1A1A/F4F4F4?text=MUSIC" alt="Placeholder image for music section">
+        </video>
+        <div class="hero-content">
+            <h1>Ned Stranger</h1>
+            <p>Listen Now</p>
+            <div class="streaming-links">
+                <a href="https://spotify.com" target="_blank"><i class="fab fa-spotify"></i></a>
+                <a href="https://applemusic.com" target="_blank"><i class="fab fa-apple"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://bandcamp.com" target="_blank"><i class="fab fa-bandcamp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Articles Section (Substack) -->
+    <section id="articles" class="container">
+        <h2 class="section-title">Articles & Thoughts</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <h3>Placeholder Article Title 1</h3>
+                <p>A short excerpt from your article. You can provide a brief summary of the content here to entice readers to click through.</p>
+                <a href="https://your-substack.com/p/article-1" target="_blank">Read on Substack &rarr;</a>
+            </div>
+            <div class="article-card">
+                <h3>Placeholder Article Title 2</h3>
+                <p>Another short excerpt from your second article. This is a great spot to showcase different topics you've covered in your writing.</p>
+                <a href="https://your-substack.com/p/article-2" target="_blank">Read on Substack &rarr;</a>
+            </div>
+            <div class="article-card">
+                <h3>Placeholder Article Title 3</h3>
+                <p>This is a third placeholder article. For a live Substack embed, copy the embed code from your post's "Share" options and paste it directly here.</p>
+                <a href="https://your-substack.com/p/article-3" target="_blank">Read on Substack &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Book Section -->
+    <section id="book" class="container">
+        <h2 class="section-title">The Book</h2>
+        <div class="content-section reverse">
+            <div class="content-image">
+                <img src="https://placehold.co/600x800/1A1A1A/F4F4F4?text=BOOK+COVER" alt="Placeholder for book cover">
+            </div>
+            <div class="content-text">
+                <h3>Title of Your Book</h3>
+                <p>This is a brief description of your book. Introduce the themes, the story, or the concepts you explore. You can use this space to convey the passion behind your work and why people should read it. It's a great spot to highlight a key quote or a powerful sentence from the book itself.</p>
+                <a href="https://example.com/buy-your-book" class="button">Purchase Now</a>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Podcast Section -->
+    <section id="podcast" class="container">
+        <h2 class="section-title">The Podcast</h2>
+        <div class="content-section">
+            <div class="content-image">
+                <img src="https://placehold.co/600x600/1A1A1A/F4F4F4?text=PODCAST+IMAGE" alt="Placeholder for podcast art">
+            </div>
+            <div class="content-text">
+                <h3>Episode Title & Synopsis</h3>
+                <p>This is a placeholder for a recent podcast episode. You can embed an episode directly from a platform like Spotify or Apple Podcasts using their embed code, or simply provide links to your podcast pages.</p>
+                <div class="streaming-links">
+                    <a href="https://spotify.com/podcast" target="_blank"><i class="fab fa-spotify"></i></a>
+                    <a href="https://podcasts.apple.com" target="_blank"><i class="fas fa-podcast"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Events Section -->
+    <section id="events" class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-list">
+            <div class="event-item">
+                <h4>Event Name - City, Country</h4>
+                <p>Date and Time, Venue Name</p>
+            </div>
+            <div class="event-item">
+                <h4>Another Event - City, Country</h4>
+                <p>Date and Time, Venue Name</p>
+            </div>
+            <div class="event-item">
+                <h4>Book Reading - City, Country</h4>
+                <p>Date and Time, Venue Name</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Ned Stranger</h2>
+        <div class="content-section">
+            <div class="content-image">
+                <img src="https://placehold.co/600x800/1A1A1A/F4F4F4?text=ARTIST+PHOTO" alt="Placeholder for a portrait photo of the artist">
+            </div>
+            <div class="content-text">
+                <p>This is a placeholder for your biography. Write about your background, your artistic journey, and what drives your creative work. Share your story, your influences, and your vision. This is where you connect with your audience on a personal level.</p>
+                <p>You can also include any notable achievements, press mentions, or collaborations here to build credibility and trust with new visitors.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact</h2>
+        <p>For bookings, press inquiries, or other questions, please fill out the form below.</p>
+        <div class="contact-form">
+            <form action="YOUR_FORM_ENDPOINT_HERE" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ned Stranger. All rights reserved.</p>
+        <p>Website hosted on nedstranger.com</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('section, hr');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
