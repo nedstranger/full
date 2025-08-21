@@ -171,13 +171,20 @@
             max-width: 800px;
             margin: 0 auto 3rem;
         }
-        .press-logo {
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%; /* Creates a square aspect ratio */
-            background-color: #333;
-            border-radius: 4px;
-        }
+     .press-logo {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Creates a square aspect ratio */
+    /* Remove this line as we'll be using the image itself: */
+    /* background-color: #333; */ 
+
+    /* Add these lines to correctly display the background image */
+    background-size: contain; /* This is key! It scales the image to fit inside the container */
+    background-repeat: no-repeat;
+    background-position: center; /* Centers the image within the container */
+    
+    border-radius: 4px;
+}
         .music-buttons-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
