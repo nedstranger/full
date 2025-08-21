@@ -266,34 +266,35 @@
         }
 
         /* --- Generic Content Sections --- */
-        .content-section {
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-        }
-        .content-section.reverse {
-            flex-direction: row-reverse;
-        }
-        .content-section img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .content-text {
-            flex: 1;
-        }
-        .content-text h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .content-text p {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
+        /* Update the existing content-section CSS */
+.content-section .content-image {
+    /* This will make the image container take up half the space */
+    flex: 1; 
+}
+.content-section .content-text {
+    /* This will make the text container take up the other half */
+    flex: 1;
+}
+
+/* You might want to remove the redundant width: 100% on the image itself, 
+   but it's not hurting anything. The container's width is what matters here. */
+.content-section img {
+    width: 100%; /* The image will now fill its new half-width container */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Also, make sure the mobile layout keeps working correctly */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .content-section.reverse {
+        flex-direction: column-reverse; /* Note: Changed to column-reverse for a more logical mobile flow */
+    }
+}
 
         /* --- Events Section --- */
         .events-list {
