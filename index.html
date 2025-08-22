@@ -76,15 +76,14 @@
         }
 
         .streaming-links a {
-    color: var(--color-light); /* Sets the link color to your light theme color */
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.streaming-links a:hover {
-    color: var(--color-accent); /* Changes color on hover */
-}
+            color: var(--color-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .streaming-links a:hover {
+            color: var(--color-accent);
+        }
 
         /* The `contact-button` class specifically for the bordered contact link */
         .contact-button {
@@ -98,7 +97,6 @@
             color: var(--color-dark);
             border-color: var(--color-light);
         }
-
 
         /* --- Hero Section --- */
         .hero {
@@ -171,20 +169,16 @@
             max-width: 800px;
             margin: 0 auto 3rem;
         }
-     .press-logo {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* Creates a square aspect ratio */
-    /* Remove this line as we'll be using the image itself: */
-    /* background-color: #333; */ 
-
-    /* Add these lines to correctly display the background image */
-    background-size: contain; /* This is key! It scales the image to fit inside the container */
-    background-repeat: no-repeat;
-    background-position: center; /* Centers the image within the container */
-    
-    border-radius: 4px;
-}
+        .press-logo {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 4px;
+            filter: invert(1);
+        }
         .music-buttons-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -205,7 +199,7 @@
             border-radius: 4px;
             background-color: transparent;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            font-size: 0.75rem; /* Adjusted font size */
+            font-size: 0.75rem;
             line-height: 1.2;
             text-align: center;
         }
@@ -229,7 +223,6 @@
             background-color: var(--color-dark-green);
             color: var(--color-light);
         }
-
 
         /* --- Articles Section --- */
         .articles-grid {
@@ -266,35 +259,26 @@
         }
 
         /* --- Generic Content Sections --- */
-        /* Update the existing content-section CSS */
-.content-section .content-image {
-    /* This will make the image container take up half the space */
-    flex: 3; 
-}
-.content-section .content-text {
-    /* This will make the text container take up the other half */
-    flex: 7;
-}
-
-/* You might want to remove the redundant width: 100% on the image itself, 
-   but it's not hurting anything. The container's width is what matters here. */
-.content-section img {
-    width: 100%; /* The image will now fill its new half-width container */
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Also, make sure the mobile layout keeps working correctly */
-@media (max-width: 768px) {
-    .content-section {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    .content-section.reverse {
-        flex-direction: column-reverse; /* Note: Changed to column-reverse for a more logical mobile flow */
-    }
-}
+        .content-section {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .content-section .content-image {
+            flex: 3;
+        }
+        .content-section .content-text {
+            flex: 7;
+        }
+        .content-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
 
         /* --- Events Section --- */
         .events-list {
@@ -478,7 +462,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="https://example.com/placeholder-music-video.mp4" type="video/mp4">
@@ -497,7 +480,6 @@
 
     <hr>
 
-    <!-- About Section -->
     <section id="about" class="container">
         <h2 class="section-title">About Ned Stranger</h2>
         <div class="content-section">
@@ -528,13 +510,11 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
         </nav>
     </header>
 
-    <!-- New Music Section -->
     <section id="music" class="container">
         <h2 class="section-title">Music</h2>
         <div class="music-content">
             <h3>Featured In:</h3>
             <div class="press-grid">
-                <!-- 10 placeholders for press logos -->
                 <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
                 <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-2.jpg');"></div>
                 <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-4.jpg');"></div>
@@ -557,7 +537,6 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
 
     <hr>
 
-    <!-- Articles Section (Substack) -->
     <section id="articles" class="container">
         <h2 class="section-title">Articles & Thoughts</h2>
         <div class="articles-grid">
@@ -575,7 +554,6 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
 
     <hr>
 
-    <!-- Book Section -->
     <section id="book" class="container">
         <h2 class="section-title">The Book</h2>
         <div class="content-section reverse">
@@ -592,7 +570,6 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
 
     <hr>
 
-    <!-- Podcast Section -->
     <section id="podcast" class="container">
         <h2 class="section-title">The Podcast</h2>
         <div class="content-section">
@@ -612,7 +589,6 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
 
     <hr>
 
-    <!-- Events Section -->
     <section id="events" class="container">
         <h2 class="section-title">Upcoming Events</h2>
         <div class="events-list">
@@ -633,7 +609,6 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
 
     <hr>
 
-    <!-- Contact Section -->
     <section id="contact" class="container">
         <h2 class="section-title">Contact</h2>
         <p>For bookings, press inquiries, or other questions, please fill out the form below.</p>
@@ -647,7 +622,7 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
     </section>
 
     <footer>
-        <p>&copy; 2025 Ned Stranger. All rights reserved.</p>
+        <p>© 2025 Ned Stranger. All rights reserved.</p>
         <p>Website hosted on nedstranger.com</p>
     </footer>
 
