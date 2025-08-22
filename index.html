@@ -1,670 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ned Stranger - Songwriter, Storyteller and Unapologetic Oversharer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ned Stranger - Songwriter, Storyteller and Unapologetic Oversharer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
-        :root {
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Montserrat', sans-serif;
-            --color-light: #F4F4F4;
-            --color-dark: #1A1A1A;
-            --color-accent: #B0A175;
-            --color-red-orange: #C95738;
-            --color-dark-green: #386641;
-        }
+        :root {
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --color-light: #F4F4F4;
+            --color-dark: #1A1A1A;
+            --color-accent: #B0A175;
+            --color-red-orange: #C95738;
+            --color-dark-green: #386641;
+        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-        body {
-            font-family: var(--font-serif);
-            background-color: var(--color-dark);
-            color: var(--color-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-        /* --- Header & Navigation --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(5px);
-            transition: background 0.3s ease;
-        }
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-        nav a {
-            color: var(--color-light);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: var(--color-accent);
-        }
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(5px);
+            transition: background 0.3s ease;
+        }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--color-accent);
+        }
 
-        .streaming-links a {
-            color: var(--color-light);
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-        .streaming-links a:hover {
-            color: var(--color-accent);
-        }
+        .streaming-links a {
+            color: var(--color-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .streaming-links a:hover {
+            color: var(--color-accent);
+        }
 
-        /* The `contact-button` class specifically for the bordered contact link */
-        .contact-button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--color-light);
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-        }
-        .contact-button:hover {
-            background-color: var(--color-light);
-            color: var(--color-dark);
-            border-color: var(--color-light);
-        }
+        /* The `contact-button` class specifically for the bordered contact link */
+        .contact-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--color-light);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .contact-button:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            border-color: var(--color-light);
+        }
 
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .hero-fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            z-index: -2;
+        }
+        .hero-content {
+            z-index: 1; /* Ensures content is on top of the video and image */
+        }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        .hero-content p {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            opacity: 0.6;
-        }
-        .hero-fallback-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            z-index: -2;
-        }
-        .hero-content h1 {
-            font-family: var(--font-serif);
-            font-size: 5rem;
-            font-weight: 300;
-            line-height: 1;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-        .hero-content p {
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        /* --- Sections --- */
+        section {
+            padding: 8rem 0;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-        /* --- Sections --- */
-        section {
-            padding: 8rem 0;
-        }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+        /* --- Music Section --- */
+        .music-content {
+            text-align: center;
+        }
+        .music-content h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        .press-logo {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 4px;
+        }
+        .music-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .music-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            background-color: transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .music-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .music-button.august-after {
+            border: 1px solid var(--color-red-orange);
+            color: var(--color-red-orange);
+        }
+        .music-button.august-after:hover {
+            background-color: var(--color-red-orange);
+            color: var(--color-light);
+        }
+        .music-button.ned-stranger {
+            border: 1px solid var(--color-dark-green);
+            color: var(--color-dark-green);
+        }
+        .music-button.ned-stranger:hover {
+            background-color: var(--color-dark-green);
+            color: var(--color-light);
+        }
 
-        /* --- Music Section --- */
-        .music-content {
-            text-align: center;
-        }
-        .music-content h3 {
-            font-family: var(--font-sans);
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-        }
-        .press-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-        .press-logo {
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 4px;
-        }
-        .music-buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .music-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-family: var(--font-sans);
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            background-color: transparent;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            font-size: 0.75rem;
-            line-height: 1.2;
-            text-align: center;
-        }
-        .music-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .music-button.august-after {
-            border: 1px solid var(--color-red-orange);
-            color: var(--color-red-orange);
-        }
-        .music-button.august-after:hover {
-            background-color: var(--color-red-orange);
-            color: var(--color-light);
-        }
-        .music-button.ned-stranger {
-            border: 1px solid var(--color-dark-green);
-            color: var(--color-dark-green);
-        }
-        .music-button.ned-stranger:hover {
-            background-color: var(--color-dark-green);
-            color: var(--color-light);
-        }
+        /* --- Articles Section --- */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .article-card {
+            border: 1px solid rgba(244, 244, 244, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        .article-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        .article-card a {
+            font-family: var(--font-sans);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* --- Articles Section --- */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .article-card {
-            border: 1px solid rgba(244, 244, 244, 0.1);
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
-        .article-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .article-card p {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-        .article-card a {
-            font-family: var(--font-sans);
-            color: var(--color-accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* --- Generic Content Sections --- */
+        .content-section {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .content-section .content-image {
+            flex: 1;
+        }
+        .content-section .content-text {
+            flex: 1;
+        }
+        /* Corrected rule to apply text styles without breaking flex layout */
+        .content-section .content-text p {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .content-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
 
-        /* --- Generic Content Sections --- */
-        .content-section {
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-        }
-        .content-section.reverse {
-            flex-direction: row-reverse;
-        }
-        .content-section .content-image {
-            flex: 1;
-        }
-        .content-section .content-text {
-            flex: 1;
-        }
-        .content-section p {
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        .content-section img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+        /* --- Events Section --- */
+        .events-list {
+            display: grid;
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .event-item {
+            border-bottom: 1px solid rgba(244, 244, 244, 0.1);
+            padding-bottom: 1.5rem;
+        }
+        .event-item:last-child {
+            border-bottom: none;
+        }
+        .event-item h4 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+        .event-item p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
 
-        /* --- Events Section --- */
-        .events-list {
-            display: grid;
-            gap: 1.5rem;
-            text-align: center;
-        }
-        .event-item {
-            border-bottom: 1px solid rgba(244, 244, 244, 0.1);
-            padding-bottom: 1.5rem;
-        }
-        .event-item:last-child {
-            border-bottom: none;
-        }
-        .event-item h4 {
-            font-family: var(--font-sans);
-            font-size: 1.2rem;
-            color: var(--color-accent);
-        }
-        .event-item p {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
+        /* --- Contact Form --- */
+        #contact {
+            text-align: center;
+        }
+        .contact-form {
+            margin-top: 2rem;
+        }
+        .contact-form form {
+            display: inline-block;
+            text-align: left;
+        }
+        .contact-form input {
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--color-light);
+            color: var(--color-light);
+            padding: 0.5rem;
+            margin: 0 0.5rem 1rem 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            width: 250px;
+        }
+        .contact-form input::placeholder {
+            color: rgba(244, 244, 244, 0.5);
+        }
+        .button {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--color-light);
+            color: var(--color-light);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            overflow: hidden;
+            transition: color 0.3s;
+        }
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 244, 244, 0.1);
+            transform: skewX(-30deg);
+            transition: left 0.5s ease;
+        }
+        .button:hover::before {
+            left: 100%;
+            animation: shine 1.5s infinite;
+        }
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        .button:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+        .contact-form button {
+            background: var(--color-light);
+            color: var(--color-dark);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: var(--color-accent);
+            color: var(--color-light);
+        }
 
-        /* --- Contact Form --- */
-        #contact {
-            text-align: center;
-        }
-        .contact-form {
-            margin-top: 2rem;
-        }
-        .contact-form form {
-            display: inline-block;
-            text-align: left;
-        }
-        .contact-form input {
-            background: none;
-            border: none;
-            border-bottom: 1px solid var(--color-light);
-            color: var(--color-light);
-            padding: 0.5rem;
-            margin: 0 0.5rem 1rem 0;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            width: 250px;
-        }
-        .contact-form input::placeholder {
-            color: rgba(244, 244, 244, 0.5);
-        }
-        .button {
-            position: relative;
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border: 1px solid var(--color-light);
-            color: var(--color-light);
-            text-decoration: none;
-            font-family: var(--font-sans);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            overflow: hidden;
-            transition: color 0.3s;
-        }
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(244, 244, 244, 0.1);
-            transform: skewX(-30deg);
-            transition: left 0.5s ease;
-        }
-        .button:hover::before {
-            left: 100%;
-            animation: shine 1.5s infinite;
-        }
-        @keyframes shine {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        .button:hover {
-            background-color: var(--color-light);
-            color: var(--color-dark);
-        }
-        .contact-form button {
-            background: var(--color-light);
-            color: var(--color-dark);
-            border: none;
-            padding: 0.75rem 2rem;
-            font-family: var(--font-sans);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: var(--color-accent);
-            color: var(--color-light);
-        }
+        /* --- Horizontal rule --- */
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(244, 244, 244, 0.1);
+            margin: 4rem auto;
+            width: 50%;
+        }
 
-        /* --- Horizontal rule --- */
-        hr {
-            border: none;
-            height: 1px;
-            background: rgba(244, 244, 244, 0.1);
-            margin: 4rem auto;
-            width: 50%;
-        }
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(244, 244, 244, 0.1);
+        }
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
 
-        /* --- Footer --- */
-        footer {
-            padding: 2rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(244, 244, 244, 0.1);
-        }
-        footer p {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-            .content-section {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            .content-section.reverse {
-                flex-direction: column;
-            }
-            header {
-                padding: 1rem;
-            }
-            nav {
-                display: none;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .contact-form form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .contact-form input {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-            .press-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-            .music-buttons-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .content-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .content-section.reverse {
+                flex-direction: column;
+            }
+            header {
+                padding: 1rem;
+            }
+            nav {
+                display: none;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .contact-form form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-form input {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            .press-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .music-buttons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Ned Stranger</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#music">Music</a>
-            <a href="#articles">Articles</a>
-            <a href="#book">Book</a>
-            <a href="#podcast">Podcast</a>
-            <a href="#events">Events</a>
-            <a href="#contact" class="contact-button">Contact</a>
-        </nav>
-    </header>
+    <header>
+        <div class="logo">Ned Stranger</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#articles">Articles</a>
+            <a href="#book">Book</a>
+            <a href="#podcast">Podcast</a>
+            <a href="#events">Events</a>
+            <a href="#contact" class="contact-button">Contact</a>
+        </nav>
+    </header>
 
-    <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://media.githubusercontent.com/media/nedstranger/full/main/Assets/Videos/Ned-Sofar-Riga.mp4" type="video/mp4">
-        </video>
-        <img class="hero-fallback-image" src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Hero.jpg" alt="Ned Stranger Hero Image">
-        <div class="hero-content">
-            <h1>Ned Stranger</h1>
-            <p>Songwriter, Storyteller and Unapologetic Oversharer</p>
-            <div class="streaming-links">
-                <a href="https://open.spotify.com/artist/7AuXlDJhnWt4NKtEwaabif?si=dad3be89a70a4579" target="_blank"><i class="fab fa-spotify"></i></a>
-                <a href="https://youtube.com/nedstranger" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://nedstranger.substack.com" target="_blank" title="Substack Articles"><i class="fas fa-pencil-alt"></i></a>
-            </div>
-        </div>
-    </section>
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://media.githubusercontent.com/media/nedstranger/full/main/Assets/Videos/Ned-Sofar-Riga.mp4" type="video/mp4">
+        </video>
+        <img class="hero-fallback-image" src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Hero.jpg" alt="Ned Stranger Hero Image">
+        <div class="hero-content">
+            <h1>Ned Stranger</h1>
+            <p>Songwriter, Storyteller and Unapologetic Oversharer</p>
+            <div class="streaming-links">
+                <a href="https://open.spotify.com/artist/7AuXlDJhnWt4NKtEwaabif?si=dad3be89a70a4579" target="_blank"><i class="fab fa-spotify"></i></a>
+                <a href="https://youtube.com/nedstranger" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://nedstranger.substack.com" target="_blank" title="Substack Articles"><i class="fas fa-pencil-alt"></i></a>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="about" class="container">
-        <h2 class="section-title">About Ned Stranger</h2>
-        <div class="content-section">
-            <div class="content-image">
-                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_About.jpg?raw=true" alt="Portrait photo of Ned Strangerb with guitar">
-            </div>
-            <div class="content-text">
-                <p>There are few things I find more dangerous than a long-kept secret—just as there are few things more powerful than a well-told story. And so, first and foremost, I identify as an unapologetic oversharer.
+    <section id="about" class="container">
+        <h2 class="section-title">About Ned Stranger</h2>
+        <div class="content-section">
+            <div class="content-image">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_About.jpg?raw=true" alt="Portrait photo of Ned Strangerb with guitar">
+            </div>
+            <div class="content-text">
+                <p>There are few things I find more dangerous than a long-kept secret—just as there are few things more powerful than a well-told story. And so, first and foremost, I identify as an unapologetic oversharer.
 My songs are simply a vessel for sharing my most revealing experiences and thoughts with a captive audience. I weave poetic lyricism through an indie-folk tapestry of classical guitar and piano, exploring themes that range from the macro to the micro: polyamory and unpacking jealousy; late-life care and my mother’s need to be remembered; my travels to Istanbul during the 2016 military coup; the tragic tale of my favorite 18th-century French mathematician’s death in a duel...</p>
-                <br>
-                <p>I first picked up a guitar at age 14, but it wasn’t until my university days, studying law at Cambridge, that my songwriting began to bear fruit. There, I met my best friend, and together we formed an indie-folk duo, August and After. After graduation, we moved to London and reached millions of listeners worldwide with features on Official Spotify playlists, BBC Radio, Songwriting Magazine, and an interview in The Independent.
+                <br>
+                <p>I first picked up a guitar at age 14, but it wasn’t until my university days, studying law at Cambridge, that my songwriting began to bear fruit. There, I met my best friend, and together we formed an indie-folk duo, August and After. After graduation, we moved to London and reached millions of listeners worldwide with features on Official Spotify playlists, BBC Radio, Songwriting Magazine, and an interview in The Independent.
 In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows at Volkstheater True Story Nights, TEDx Vienna, and Sofar Sounds. On stage, I am as much a storyteller as a songwriter, my concerts memorable for the engaging and humorous stories that precede the songs.</p>
-            </div>
-        </div>
-    </section>
+            </div>
+        </div>
+    </section>
 
-    <hr>
-    
-    <header>
-        <div class="logo">Ned Stranger</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#music">Music</a>
-            <a href="#articles">Articles</a>
-            <a href="#book">Book</a>
-            <a href="#podcast">Podcast</a>
-            <a href="#events">Events</a>
-            <a href="#contact" class="contact-button">Contact</a>
-        </nav>
-    </header>
+    <hr>
+    
+    <header>
+        <div class="logo">Ned Stranger</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#articles">Articles</a>
+            <a href="#book">Book</a>
+            <a href="#podcast">Podcast</a>
+            <a href="#events">Events</a>
+            <a href="#contact" class="contact-button">Contact</a>
+        </nav>
+    </header>
 
-    <section id="music" class="container">
-        <h2 class="section-title">Music</h2>
-        <div class="music-content">
-            <h3>Featured In:</h3>
-            <div class="press-grid">
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-2.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-4.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-3.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-5.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-7.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-6.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-9.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-8.jpg');"></div>
-                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-1.jpg');"></div>
-            </div>
-            <div class="music-buttons-grid">
-                <a href="https://www.youtube.com/augustandafter" target="_blank" class="music-button august-after">August and After: YouTube</a>
-                <a href="https://open.spotify.com/artist/7AuXlDJhnWt4NKtEwaabif?si=7532a28ac2144a68" target="_blank" class="music-button august-after">August and After: Spotify</a>
-                <a href="https://www.youtube.com/nedstranger" target="_blank" class="music-button ned-stranger">Ned Stranger: YouTube</a>
-                <a href="https://open.spotify.com/artist/4TwSn89695Yi3bo4ONWEgz?si=WHqZVZW4QtqYLdj2634Wuw" target="_blank" class="music-button ned-stranger">Ned Stranger: Spotify</a>
-            </div>
-        </div>
-    </section>
+    <section id="music" class="container">
+        <h2 class="section-title">Music</h2>
+        <div class="music-content">
+            <h3>Featured In:</h3>
+            <div class="press-grid">
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-2.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-4.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-3.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-5.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-7.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-6.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-9.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-8.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-1.jpg');"></div>
+            </div>
+            <div class="music-buttons-grid">
+                <a href="https://www.youtube.com/augustandafter" target="_blank" class="music-button august-after">August and After: YouTube</a>
+                <a href="https://open.spotify.com/artist/7AuXlDJhnWt4NKtEwaabif?si=7532a28ac2144a68" target="_blank" class="music-button august-after">August and After: Spotify</a>
+                <a href="https://www.youtube.com/nedstranger" target="_blank" class="music-button ned-stranger">Ned Stranger: YouTube</a>
+                <a href="https://open.spotify.com/artist/4TwSn89695Yi3bo4ONWEgz?si=WHqZVZW4QtqYLdj2634Wuw" target="_blank" class="music-button ned-stranger">Ned Stranger: Spotify</a>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="articles" class="container">
-        <h2 class="section-title">Articles & Thoughts</h2>
-        <div class="articles-grid">
-            <div class="article-card">
-                <p><div class="substack-post-embed"><p lang="en">Have you always been non-monogamous? by Ned Stranger</p><p>Before my current marriage, my relationships all seemed to follow a similar pattern...</p><a data-post-link href="https://nedstranger.substack.com/p/have-you-always-been-non-monogamous">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
-            </div>
-            <div class="article-card">
-                <p><div class="substack-post-embed"><p lang="en">How did your open relationship start? by Ned Stranger</p><p>Who was the "lover" that tipped me into the world of non-monogamy? </p><a data-post-link href="https://nedstranger.substack.com/p/how-did-your-open-relationship-start">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
-            </div>
-            <div class="article-card">
-                <p><div class="substack-post-embed"><p lang="en">How does your open relationship work? by Ned Stranger</p><p>How to make non-monogamy work in a healthy, non-jealous way?</p><a data-post-link href="https://nedstranger.substack.com/p/how-does-your-relationship-work">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
-            </div>
-        </div>
-    </section>
+    <section id="articles" class="container">
+        <h2 class="section-title">Articles & Thoughts</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <p><div class="substack-post-embed"><p lang="en">Have you always been non-monogamous? by Ned Stranger</p><p>Before my current marriage, my relationships all seemed to follow a similar pattern...</p><a data-post-link href="https://nedstranger.substack.com/p/have-you-always-been-non-monogamous">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
+            </div>
+            <div class="article-card">
+                <p><div class="substack-post-embed"><p lang="en">How did your open relationship start? by Ned Stranger</p><p>Who was the "lover" that tipped me into the world of non-monogamy? </p><a data-post-link href="https://nedstranger.substack.com/p/how-did-your-open-relationship-start">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
+            </div>
+            <div class="article-card">
+                <p><div class="substack-post-embed"><p lang="en">How does your open relationship work? by Ned Stranger</p><p>How to make non-monogamy work in a healthy, non-jealous way?</p><a data-post-link href="https://nedstranger.substack.com/p/how-does-your-relationship-work">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="book" class="container">
-        <h2 class="section-title">The Book</h2>
-        <div class="content-section reverse">
-            <div class="content-image">
-                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/SNMD-Cover-1.jpg" alt="Book cover">
-            </div>
-            <div class="content-text">
-                <p>In November 2024, my wife and I received the results of a DNA paternity test that showed that I am not the biological father of our daughter. Being in an open marriage, we'd often explored this as a hypothetical, but didn't expect it to actually happen</p>
-                <br>
-                <p>I'm currently exploring how we got to the situation, how I manage it without any jealousy or resentment, and what might happen going forwards... There are so many different dimensions to the story that I'm currently writing it into a book. If you want to know when the book's out, please sign up for the announcement here!</p>
-                <br>
-                <a href="mailto:hello@nedmortimer.com?subject=Sign Up For Book" class="button">Sign Up For Announcement</a>
-            </div>
-        </div>
-    </section>
+    <section id="book" class="container">
+        <h2 class="section-title">The Book</h2>
+        <div class="content-section reverse">
+            <div class="content-image">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/SNMD-Cover-1.jpg" alt="Book cover">
+            </div>
+            <div class="content-text">
+                <p>In November 2024, my wife and I received the results of a DNA paternity test that showed that I am not the biological father of our daughter. Being in an open marriage, we'd often explored this as a hypothetical, but didn't expect it to actually happen</p>
+                <br>
+                <p>I'm currently exploring how we got to the situation, how I manage it without any jealousy or resentment, and what might happen going forwards... There are so many different dimensions to the story that I'm currently writing it into a book. If you want to know when the book's out, please sign up for the announcement here!</p>
+                <br>
+                <a href="mailto:hello@nedmortimer.com?subject=Sign Up For Book" class="button">Sign Up For Announcement</a>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="podcast" class="container">
-        <h2 class="section-title">The Podcast</h2>
-        <div class="content-section">
-            <div class="content-image">
-                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Podcast.jpg?raw=true" alt="Placeholder for podcast art">
-            </div>
-            <div class="content-text">
-                <h3>She's Not My Daughter - The Podcast</h3>
-                <p>And, because I love the sound of my own voice, I've also turned my articles into podcast format - think of it as your own little voicenotes on the theme of non-monogamy and dating...</p>
-                <div class="streaming-links">
-                    <a href="https://spotify.com/podcast" target="_blank"><i class="fab fa-spotify"></i></a>
-                    <a href="https://podcasts.apple.com" target="_blank"><i class="fas fa-podcast"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="podcast" class="container">
+        <h2 class="section-title">The Podcast</h2>
+        <div class="content-section">
+            <div class="content-image">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Podcast.jpg?raw=true" alt="Placeholder for podcast art">
+            </div>
+            <div class="content-text">
+                <h3>She's Not My Daughter - The Podcast</h3>
+                <p>And, because I love the sound of my own voice, I've also turned my articles into podcast format - think of it as your own little voicenotes on the theme of non-monogamy and dating...</p>
+                <div class="streaming-links">
+                    <a href="https://spotify.com/podcast" target="_blank"><i class="fab fa-spotify"></i></a>
+                    <a href="https://podcasts.apple.com" target="_blank"><i class="fas fa-podcast"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="events" class="container">
-        <h2 class="section-title">Upcoming Events</h2>
-        <div class="events-list">
-            <div class="event-item">
-                <h4>Event Name - City, Country</h4>
-            </div>
-            <div class="event-item">
-                <h4>Another Event - City, Country</h4>
-            </div>
-        </div>
-    </section>
+    <section id="events" class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-list">
+            <div class="event-item">
+                <h4>Event Name - City, Country</h4>
+            </div>
+            <div class="event-item">
+                <h4>Another Event - City, Country</h4>
+            </div>
+            <div class="event-item">
+                <h4>Book Reading - City, Country</h4>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <hr>
 
-    <section id="contact" class="container">
-        <h2 class="section-title">Contact</h2>
-        <p>For bookings, press inquiries, or other questions, please fill out the form below.</p>
-        <div class="contact-form">
-            <form action="YOUR_FORM_ENDPOINT_HERE" method="post">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact</h2>
+        <p>For bookings, press inquiries, or other questions, please fill out the form below.</p>
+        <div class="contact-form">
+            <form action="YOUR_FORM_ENDPOINT_HERE" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2025 Ned Stranger. All rights reserved.</p>
-        <p>Website hosted on nedstranger.com</p>
-    </footer>
+    <footer>
+        <p>© 2025 Ned Stranger. All rights reserved.</p>
+        <p>Website hosted on nedstranger.com</p>
+    </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll('section, hr');
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('section, hr');
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
 
-            sections.forEach(section => {
-                section.style.opacity = 0;
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 1s ease, transform 1s ease';
-                observer.observe(section);
-            });
-        });
-    </script>
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
