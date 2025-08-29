@@ -328,6 +328,45 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        /* --- Formspree styles for the book section --- */
+        .book-form-container {
+            margin-top: 2rem;
+        }
+        .book-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .book-form input {
+            background: none;
+            border: 1px solid var(--color-light);
+            color: var(--color-light);
+            padding: 0.75rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .book-form input::placeholder {
+            color: rgba(244, 244, 244, 0.5);
+        }
+        .book-form input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        .book-form .button {
+            width: 100%;
+            text-align: center;
+            border: 1px solid var(--color-light);
+            padding: 1rem 2.5rem;
+        }
+        .book-form .button:hover {
+            color: var(--color-dark);
+            background-color: var(--color-light);
+        }
+
         /* --- Events Section --- */
         .events-list {
             display: grid;
@@ -605,7 +644,13 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
                 <br>
                 <p>I'm currently exploring how we got to the situation, how I manage it without any jealousy or resentment, and what might happen going forwards... There are so many different dimensions to the story that I'm currently writing it into a book. If you want to know when the book's out, please sign up for the announcement here!</p>
                 <br>
-                <a href="mailto:hello@nedmortimer.com?subject=Sign Up For Book" class="button">Sign Up For Announcement</a>
+                <div class="book-form-container">
+                    <form class="book-form" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <button type="submit" class="button">Sign Up</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -619,6 +664,7 @@ In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows
                 <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Podcast.jpg?raw=true" alt="Placeholder for podcast art">
             </div>
             <div class="content-text">
+                <h3>She's Not My Daughter - The Podcast</h3>
                 <p>And, because I love the sound of my own voice, I've also turned my articles into podcast format - think of it as your own little voicenotes on the theme of non-monogamy and dating...</p>
                 <div class="streaming-links">
                     <a href="https://spotify.com/podcast" target="_blank"><i class="fab fa-spotify"></i></a>
