@@ -129,6 +129,20 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+        .streaming-links {
+            margin-top: 1.5rem;
+        }
+        .streaming-links a {
+            color: var(--color-light) !important;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .streaming-links a:hover {
+            color: var(--color-accent) !important;
+            transform: scale(1.1);
+        }
 
         /* --- Sections --- */
         section {
@@ -163,28 +177,57 @@
             display: flex;
             align-items: center;
         }
-
         .press-slider {
             display: flex;
-            overflow-x: hidden; /* Hide scrollbar for a cleaner look */
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
             gap: 1.5rem;
             padding: 1rem 0;
         }
-
         .press-slider::-webkit-scrollbar {
             display: none;
         }
-
         .press-logo {
-            width: 150px; 
+            width: 150px; /* Fixed width for a better slider experience */
             height: 150px;
             flex: 0 0 auto;
+            scroll-snap-align: center;
             background-color: #333;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 4px;
+        }
+        .slider-btn {
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid var(--color-light);
+            color: var(--color-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .slider-btn:hover {
+            opacity: 1;
+        }
+        #prev-btn {
+            left: -20px;
+        }
+        #next-btn {
+            right: -20px;
         }
 
         .music-buttons-grid {
@@ -528,6 +571,7 @@
         <div class="music-content">
             <h3>Featured In:</h3>
             <div class="press-slider-container">
+                <button id="prev-btn" class="slider-btn">&lt;</button>
                 <div id="press-slider" class="press-slider">
                     <!-- Corrected URLs for press logos -->
                     <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
@@ -541,6 +585,7 @@
                     <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-8.jpg');"></div>
                     <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-1.jpg');"></div>
                 </div>
+                <button id="next-btn" class="slider-btn">&gt;</button>
             </div>
             <div class="music-buttons-grid">
                 <a href="https://www.youtube.com/augustandafter" target="_blank" class="music-button august-after">August and After: YouTube</a>
@@ -680,45 +725,47 @@
                 section.style.transition = 'opacity 1s ease, transform 1s ease';
                 observer.observe(section);
             });
-
-            // Continuous scroll functionality for the press slider
+            // New slider functionality with buttons
             if (slider && sliderContainer) {
-                let scrollSpeed = 1; // Adjust this value to change scroll speed
-                let isScrolling = true;
+                const scrollDistance = 180; // Distance to scroll per click (logo width + gap)
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
 
-                function autoScroll() {
-                    if (!isScrolling) return;
-
-                    slider.scrollLeft += scrollSpeed;
-                    
-                    // Loop back to the start when the end is reached
-                    if (slider.scrollLeft >= (slider.scrollWidth / 2)) {
-                        slider.scrollLeft = 0;
+                function updateButtonVisibility() {
+                    // Check if scrollLeft is at the very start
+                    if (slider.scrollLeft <= 0) {
+                        prevBtn.style.visibility = 'hidden';
+                    } else {
+                        prevBtn.style.visibility = 'visible';
                     }
-                    requestAnimationFrame(autoScroll);
+                    // Check if scrollLeft is at the very end
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+                        nextBtn.style.visibility = 'hidden';
+                    } else {
+                        nextBtn.style.visibility = 'visible';
+                    }
                 }
 
-                // Duplicate logos for seamless looping
-                const logos = document.querySelectorAll('.press-logo');
-                logos.forEach(logo => {
-                    const clone = logo.cloneNode(true);
-                    slider.appendChild(clone);
+                prevBtn.addEventListener('click', () => {
+                    slider.scrollBy({
+                        left: -scrollDistance,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(updateButtonVisibility, 600); // Re-check visibility after scroll
                 });
 
-                // Pause on hover
-                sliderContainer.addEventListener('mouseenter', () => {
-                    isScrolling = false;
-                });
-                sliderContainer.addEventListener('mouseleave', () => {
-                    isScrolling = true;
-                    autoScroll();
+                nextBtn.addEventListener('click', () => {
+                    slider.scrollBy({
+                        left: scrollDistance,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(updateButtonVisibility, 600); // Re-check visibility after scroll
                 });
 
-                // Initial start of the scroll
-                autoScroll();
+                slider.addEventListener('scroll', updateButtonVisibility);
+                updateButtonVisibility(); // Initial check
             }
         });
     </script>
 </body>
 </html>
-
