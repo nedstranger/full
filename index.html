@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ned Stranger - Musician, Writer, Podcaster</title>
-    <!-- Updated Font Awesome CDN link to a version that includes the Substack icon -->
+    <title>Ned Stranger - Songwriter, Storyteller and Unapologetic Oversharer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -76,6 +75,16 @@
             color: var(--color-accent);
         }
 
+        .streaming-links a {
+            color: var(--color-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .streaming-links a:hover {
+            color: var(--color-accent);
+        }
+
         /* The `contact-button` class specifically for the bordered contact link */
         .contact-button {
             display: inline-block;
@@ -88,7 +97,6 @@
             color: var(--color-dark);
             border-color: var(--color-light);
         }
-
 
         /* --- Hero Section --- */
         .hero {
@@ -112,6 +120,19 @@
             z-index: -1;
             opacity: 0.6;
         }
+        .hero-fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            z-index: -2;
+        }
+        .hero-content {
+            z-index: 1; /* Ensures content is on top of the video and image */
+        }
         .hero-content h1 {
             font-family: var(--font-serif);
             font-size: 5rem;
@@ -128,20 +149,6 @@
             margin-top: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-        .streaming-links {
-            margin-top: 1.5rem;
-        }
-        .streaming-links a {
-            color: var(--color-light) !important;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .streaming-links a:hover {
-            color: var(--color-accent) !important;
-            transform: scale(1.1);
         }
 
         /* --- Sections --- */
@@ -168,68 +175,22 @@
             letter-spacing: 2px;
             margin-bottom: 2rem;
         }
-
-        /* New slider gallery styling */
-        .press-slider-container {
-            position: relative;
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
             max-width: 800px;
             margin: 0 auto 3rem;
-            display: flex;
-            align-items: center;
-        }
-        .press-slider {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-            gap: 1.5rem;
-            padding: 1rem 0;
-        }
-        .press-slider::-webkit-scrollbar {
-            display: none;
         }
         .press-logo {
-            width: 150px; /* Fixed width for a better slider experience */
-            height: 150px;
-            flex: 0 0 auto;
-            scroll-snap-align: center;
-            background-color: #333;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 4px;
         }
-        .slider-btn {
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid var(--color-light);
-            color: var(--color-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .slider-btn:hover {
-            opacity: 1;
-        }
-        #prev-btn {
-            left: -20px;
-        }
-        #next-btn {
-            right: -20px;
-        }
-
         .music-buttons-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -250,7 +211,7 @@
             border-radius: 4px;
             background-color: transparent;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            font-size: 0.75rem; /* Adjusted font size */
+            font-size: 0.75rem;
             line-height: 1.2;
             text-align: center;
         }
@@ -274,7 +235,6 @@
             background-color: var(--color-dark-green);
             color: var(--color-light);
         }
-
 
         /* --- Articles Section --- */
         .articles-grid {
@@ -319,25 +279,24 @@
         .content-section.reverse {
             flex-direction: row-reverse;
         }
+        .content-section .content-image {
+            flex: 1;
+        }
+        .content-section .content-text {
+            flex: 1;
+        }
+        /* Corrected rule to apply text styles without breaking flex layout */
+        .content-section .content-text p {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
         .content-section img {
             width: 100%;
             height: auto;
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .content-text {
-            flex: 1;
-        }
-        .content-text h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .content-text p {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
         }
 
         /* --- Events Section --- */
@@ -498,19 +457,11 @@
                 width: 100%;
                 margin-bottom: 1rem;
             }
-            .press-slider-container {
-                max-width: 300px;
-                overflow: hidden;
+            .press-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
             .music-buttons-grid {
                 grid-template-columns: 1fr;
-            }
-            .slider-btn {
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                transform: none;
             }
         }
     </style>
@@ -530,12 +481,11 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://example.com/placeholder-music-video.mp4" type="video/mp4">
-            <img src="https://placehold.co/1920x1080/1A1A1A/F4F4F4?text=MUSIC" alt="Placeholder image for music section">
+            <source src="https://media.githubusercontent.com/media/nedstranger/full/main/Assets/Videos/Ned-Sofar-Riga.mp4" type="video/mp4">
         </video>
+        <img class="hero-fallback-image" src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Hero.jpg" alt="Ned Stranger Hero Image">
         <div class="hero-content">
             <h1>Ned Stranger</h1>
             <p>Songwriter, Storyteller and Unapologetic Oversharer</p>
@@ -549,43 +499,52 @@
 
     <hr>
 
-    <!-- About Section -->
     <section id="about" class="container">
         <h2 class="section-title">About Ned Stranger</h2>
         <div class="content-section">
             <div class="content-image">
-                <img src="https://placehold.co/600x800/1A1A1A/F4F4F4?text=ARTIST+PHOTO" alt="Placeholder for a portrait photo of the artist">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_About.jpg?raw=true" alt="Portrait photo of Ned Strangerb with guitar">
             </div>
             <div class="content-text">
-                <p>This is a placeholder for your biography. Write about your background, your artistic journey, and what drives your creative work. Share your story, your influences, and your vision. This is where you connect with your audience on a personal level.</p>
-                <p>You can also include any notable achievements, press mentions, or collaborations here to build credibility and trust with new visitors.</p>
+                <p>There are few things I find more dangerous than a long-kept secret—just as there are few things more powerful than a well-told story. And so, first and foremost, I identify as an unapologetic oversharer.
+My songs are simply a vessel for sharing my most revealing experiences and thoughts with a captive audience. I weave poetic lyricism through an indie-folk tapestry of classical guitar and piano, exploring themes that range from the macro to the micro: polyamory and unpacking jealousy; late-life care and my mother’s need to be remembered; my travels to Istanbul during the 2016 military coup; the tragic tale of my favorite 18th-century French mathematician’s death in a duel...</p>
+                <br>
+                <p>I first picked up a guitar at age 14, but it wasn’t until my university days, studying law at Cambridge, that my songwriting began to bear fruit. There, I met my best friend, and together we formed an indie-folk duo, August and After. After graduation, we moved to London and reached millions of listeners worldwide with features on Official Spotify playlists, BBC Radio, Songwriting Magazine, and an interview in The Independent.
+In 2023, I moved to Vienna and began performing solo as Ned Stranger, with shows at Volkstheater True Story Nights, TEDx Vienna, and Sofar Sounds. On stage, I am as much a storyteller as a songwriter, my concerts memorable for the engaging and humorous stories that precede the songs.</p>
             </div>
         </div>
     </section>
 
     <hr>
     
-    <!-- New Music Section -->
+    <header>
+        <div class="logo">Ned Stranger</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#articles">Articles</a>
+            <a href="#book">Book</a>
+            <a href="#podcast">Podcast</a>
+            <a href="#events">Events</a>
+            <a href="#contact" class="contact-button">Contact</a>
+        </nav>
+    </header>
+
     <section id="music" class="container">
         <h2 class="section-title">Music</h2>
         <div class="music-content">
             <h3>Featured In:</h3>
-            <div class="press-slider-container">
-                <button id="prev-btn" class="slider-btn">&lt;</button>
-                <div id="press-slider" class="press-slider">
-                    <!-- Corrected URLs for press logos -->
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-2.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-4.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-3.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-5.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-7.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-6.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-9.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-8.jpg');"></div>
-                    <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-1.jpg');"></div>
-                </div>
-                <button id="next-btn" class="slider-btn">&gt;</button>
+            <div class="press-grid">
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-10.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-2.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-4.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-3.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-5.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-7.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-6.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-9.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-8.jpg');"></div>
+                <div class="press-logo" style="background-image: url('https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/MusicFeatureLogo-1.jpg');"></div>
             </div>
             <div class="music-buttons-grid">
                 <a href="https://www.youtube.com/augustandafter" target="_blank" class="music-button august-after">August and After: YouTube</a>
@@ -598,57 +557,50 @@
 
     <hr>
 
-    <!-- Articles Section (Substack) -->
     <section id="articles" class="container">
         <h2 class="section-title">Articles & Thoughts</h2>
         <div class="articles-grid">
             <div class="article-card">
-                <h3>Placeholder Article Title 1</h3>
-                <p>A short excerpt from your article. You can provide a brief summary of the content here to entice readers to click through.</p>
-                <a href="https://your-substack.com/p/article-1" target="_blank">Read on Substack &rarr;</a>
+                <p><div class="substack-post-embed"><p lang="en">Have you always been non-monogamous? by Ned Stranger</p><p>Before my current marriage, my relationships all seemed to follow a similar pattern...</p><a data-post-link href="https://nedstranger.substack.com/p/have-you-always-been-non-monogamous">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
             </div>
             <div class="article-card">
-                <h3>Placeholder Article Title 2</h3>
-                <p>Another short excerpt from your second article. This is a great spot to showcase different topics you've covered in your writing.</p>
-                <a href="https://your-substack.com/p/article-2" target="_blank">Read on Substack &rarr;</a>
+                <p><div class="substack-post-embed"><p lang="en">How did your open relationship start? by Ned Stranger</p><p>Who was the "lover" that tipped me into the world of non-monogamy? </p><a data-post-link href="https://nedstranger.substack.com/p/how-did-your-open-relationship-start">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
             </div>
             <div class="article-card">
-                <h3>Placeholder Article Title 3</h3>
-                <p>This is a third placeholder article. For a live Substack embed, copy the embed code from your post's "Share" options and paste it directly here.</p>
-                <a href="https://your-substack.com/p/article-3" target="_blank">Read on Substack &rarr;</a>
+                <p><div class="substack-post-embed"><p lang="en">How does your open relationship work? by Ned Stranger</p><p>How to make non-monogamy work in a healthy, non-jealous way?</p><a data-post-link href="https://nedstranger.substack.com/p/how-does-your-relationship-work">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script></p>
             </div>
         </div>
     </section>
 
     <hr>
 
-    <!-- Book Section -->
     <section id="book" class="container">
         <h2 class="section-title">The Book</h2>
         <div class="content-section reverse">
             <div class="content-image">
-                <img src="https://placehold.co/600x800/1A1A1A/F4F4F4?text=BOOK+COVER" alt="Placeholder for book cover">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/SNMD-Cover-1.jpg" alt="Book cover">
             </div>
             <div class="content-text">
-                <h3>Title of Your Book</h3>
-                <p>This is a brief description of your book. Introduce the themes, the story, or the concepts you explore. You can use this space to convey the passion behind your work and why people should read it. It's a great spot to highlight a key quote or a powerful sentence from the book itself.</p>
-                <a href="https://example.com/buy-your-book" class="button">Purchase Now</a>
+                <p>In November 2024, my wife and I received the results of a DNA paternity test that showed that I am not the biological father of our daughter. Being in an open marriage, we'd often explored this as a hypothetical, but didn't expect it to actually happen</p>
+                <br>
+                <p>I'm currently exploring how we got to the situation, how I manage it without any jealousy or resentment, and what might happen going forwards... There are so many different dimensions to the story that I'm currently writing it into a book. If you want to know when the book's out, please sign up for the announcement here!</p>
+                <br>
+                <a href="mailto:hello@nedmortimer.com?subject=Sign Up For Book" class="button">Sign Up For Announcement</a>
             </div>
         </div>
     </section>
 
     <hr>
 
-    <!-- Podcast Section -->
     <section id="podcast" class="container">
         <h2 class="section-title">The Podcast</h2>
         <div class="content-section">
             <div class="content-image">
-                <img src="https://placehold.co/600x600/1A1A1A/F4F4F4?text=PODCAST+IMAGE" alt="Placeholder for podcast art">
+                <img src="https://raw.githubusercontent.com/nedstranger/full/main/Assets/Images/Ned_Stranger_Podcast.jpg?raw=true" alt="Placeholder for podcast art">
             </div>
             <div class="content-text">
-                <h3>Episode Title & Synopsis</h3>
-                <p>This is a placeholder for a recent podcast episode. You can embed an episode directly from a platform like Spotify or Apple Podcasts using their embed code, or simply provide links to your podcast pages.</p>
+                <h3>She's Not My Daughter - The Podcast</h3>
+                <p>And, because I love the sound of my own voice, I've also turned my articles into podcast format - think of it as your own little voicenotes on the theme of non-monogamy and dating...</p>
                 <div class="streaming-links">
                     <a href="https://spotify.com/podcast" target="_blank"><i class="fab fa-spotify"></i></a>
                     <a href="https://podcasts.apple.com" target="_blank"><i class="fas fa-podcast"></i></a>
@@ -659,28 +611,23 @@
 
     <hr>
 
-    <!-- Events Section -->
     <section id="events" class="container">
         <h2 class="section-title">Upcoming Events</h2>
         <div class="events-list">
             <div class="event-item">
                 <h4>Event Name - City, Country</h4>
-                <p>Date and Time, Venue Name</p>
             </div>
             <div class="event-item">
                 <h4>Another Event - City, Country</h4>
-                <p>Date and Time, Venue Name</p>
             </div>
             <div class="event-item">
                 <h4>Book Reading - City, Country</h4>
-                <p>Date and Time, Venue Name</p>
             </div>
         </div>
     </section>
 
     <hr>
 
-    <!-- Contact Section -->
     <section id="contact" class="container">
         <h2 class="section-title">Contact</h2>
         <p>For bookings, press inquiries, or other questions, please fill out the form below.</p>
@@ -694,16 +641,14 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Ned Stranger. All rights reserved.</p>
+        <p>© 2025 Ned Stranger. All rights reserved.</p>
         <p>Website hosted on nedstranger.com</p>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll('section, hr');
-            const slider = document.getElementById('press-slider');
-            const sliderContainer = document.querySelector('.press-slider-container');
-            
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -725,46 +670,6 @@
                 section.style.transition = 'opacity 1s ease, transform 1s ease';
                 observer.observe(section);
             });
-            // New slider functionality with buttons
-            if (slider && sliderContainer) {
-                const scrollDistance = 180; // Distance to scroll per click (logo width + gap)
-                const prevBtn = document.getElementById('prev-btn');
-                const nextBtn = document.getElementById('next-btn');
-
-                function updateButtonVisibility() {
-                    // Check if scrollLeft is at the very start
-                    if (slider.scrollLeft <= 0) {
-                        prevBtn.style.visibility = 'hidden';
-                    } else {
-                        prevBtn.style.visibility = 'visible';
-                    }
-                    // Check if scrollLeft is at the very end
-                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-                        nextBtn.style.visibility = 'hidden';
-                    } else {
-                        nextBtn.style.visibility = 'visible';
-                    }
-                }
-
-                prevBtn.addEventListener('click', () => {
-                    slider.scrollBy({
-                        left: -scrollDistance,
-                        behavior: 'smooth'
-                    });
-                    setTimeout(updateButtonVisibility, 600); // Re-check visibility after scroll
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    slider.scrollBy({
-                        left: scrollDistance,
-                        behavior: 'smooth'
-                    });
-                    setTimeout(updateButtonVisibility, 600); // Re-check visibility after scroll
-                });
-
-                slider.addEventListener('scroll', updateButtonVisibility);
-                updateButtonVisibility(); // Initial check
-            }
         });
     </script>
 </body>
