@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quindi — Ned Stranger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --color-light: #F4F4F4;
+            --color-dark: #1A1A1A;
+            --color-accent: #B0A175;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: var(--color-light);
+            text-decoration: none;
+        }
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--color-accent);
+        }
+        .contact-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--color-light);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .contact-button:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        /* --- Page Hero --- */
+        .page-hero {
+            padding: 14rem 0 6rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-family: var(--font-serif);
+            font-size: 6rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* --- Song Sections --- */
+        .song-section {
+            padding: 6rem 0;
+        }
+        .song-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- SoundCloud Player --- */
+        .player-container {
+            margin-bottom: 3rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .player-placeholder {
+            background: rgba(244, 244, 244, 0.05);
+            border: 1px solid rgba(244, 244, 244, 0.1);
+            border-radius: 4px;
+            padding: 2rem;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.4;
+        }
+
+        /* --- Lyrics --- */
+        .lyrics {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 2;
+            max-width: 680px;
+        }
+        .lyrics .verse {
+            margin-bottom: 2rem;
+        }
+        .lyrics .verse p {
+            margin: 0;
+        }
+        .lyrics em {
+            font-style: italic;
+        }
+
+        /* --- Dividers --- */
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(244, 244, 244, 0.1);
+            margin: 4rem auto;
+            width: 50%;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(244, 244, 244, 0.1);
+        }
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 3.5rem;
+            }
+            header {
+                padding: 1rem;
+            }
+            nav {
+                display: none;
+            }
+            .song-title {
+                font-size: 2.2rem;
+            }
+            .lyrics {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">Ned Stranger</a>
+        <nav>
+            <a href="/#about">About</a>
+            <a href="/#music">Music</a>
+            <a href="/#contact" class="contact-button">Contact</a>
+        </nav>
+    </header>
+
+    <div class="page-hero container">
+        <h1>Quindi</h1>
+        <p>Four songs</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <!-- SONG 1: Pleasure Of The Fall                                  -->
+    <!-- ============================================================ -->
+    <section class="song-section container" id="pleasure-of-the-fall">
+        <h2 class="song-title">Pleasure Of The Fall</h2>
+
+        <div class="player-container">
+            <!-- REPLACE THIS BLOCK with your SoundCloud embed once uploaded:
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23b0a175&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+            -->
+            <div class="player-placeholder">SoundCloud player — coming soon</div>
+        </div>
+
+        <div class="lyrics">
+            <div class="verse">
+                <p>You suffer fate without a second thought</p>
+                <p>Like the <em>spinning</em> plate destined for the floor</p>
+                <p>You steal a kiss that was always yours</p>
+                <p>And sigh as you sink into the waves</p>
+            </div>
+            <div class="verse">
+                <p>It's killing you, the dying art</p>
+                <p>The beauty and the cruelty of the call</p>
+                <p>The <em>touch</em>, the undoing in the dark</p>
+                <p>The pleasure of the fall</p>
+            </div>
+            <div class="verse">
+                <p>I feel the sting of that stolen kiss</p>
+                <p>And the madrigal that births desire upon your lips</p>
+                <p>There is no choice so there is no risk</p>
+                <p>I cry as I run into the waves</p>
+            </div>
+            <div class="verse">
+                <p>It's killing me, this broken start</p>
+                <p>The beauty and the cruelty of it all</p>
+                <p>The <em>touch</em>, the undoing in the dark</p>
+                <p>The pleasure of the fall</p>
+            </div>
+            <div class="verse">
+                <p>Satisfy your thirst and live the truth</p>
+                <p>The madrigal, you birthing you anew</p>
+                <p>Risk is not a choice, it's the blood you spill</p>
+                <p>It's the kiss you steal</p>
+                <p>Before you hesitate</p>
+            </div>
+            <div class="verse">
+                <p>Taste the acid rain</p>
+                <p>And the roiling waves</p>
+                <p>A breathless invitation into sin</p>
+                <p>To find a wrong that's never there</p>
+                <p>We have only to live</p>
+                <p>Only to taste, only to die</p>
+            </div>
+            <div class="verse">
+                <p>Does it feel good?</p>
+                <p>Does it make you feel alive?</p>
+            </div>
+            <div class="verse">
+                <p>Savour the undoing</p>
+                <p>It's the madrigal</p>
+                <p>Birthing you anew</p>
+                <p>Smile into death</p>
+                <p>Undo yourself with pleasure</p>
+                <p>Sink into the waves</p>
+                <p>And bring me too</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <!-- SONG 2: Lemonade                                              -->
+    <!-- ============================================================ -->
+    <section class="song-section container" id="lemonade">
+        <h2 class="song-title">Lemonade</h2>
+
+        <div class="player-container">
+            <!-- REPLACE THIS BLOCK with your SoundCloud embed once uploaded:
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23b0a175&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+            -->
+            <div class="player-placeholder">SoundCloud player — coming soon</div>
+        </div>
+
+        <div class="lyrics">
+            <div class="verse">
+                <p>What's your motive?</p>
+                <p>Maybe it's a bet</p>
+                <p>You'll break me down and then collect</p>
+                <p>Your winnings</p>
+                <p>Or maybe this is cold revenge</p>
+                <p>'Cause I once seduced and fucked your friend</p>
+                <p>And payment of the debt is</p>
+                <p>Just beginning</p>
+            </div>
+            <div class="verse">
+                <p>Squeeze me, sinking your teeth into me</p>
+                <p>And drink me like lemonade</p>
+                <p>I'll never make it out of you alive</p>
+                <p>Draw me into the doorway</p>
+                <p>Away from the prying eyes</p>
+                <p>Of the night</p>
+            </div>
+            <div class="verse">
+                <p>The chemicals of touch and scent</p>
+                <p>Combine with bittersweet effect</p>
+                <p>To draw me out my head</p>
+                <p>And leave it spinning</p>
+                <p>And though I'm no stranger to its ways</p>
+                <p>Sex alone cannot explain</p>
+                <p>The intoxicating waters</p>
+                <p>Where I'm swimming</p>
+            </div>
+            <div class="verse">
+                <p>Squeeze me, sinking your teeth into me</p>
+                <p>And drink me like lemonade</p>
+                <p>I'll never make it out of you alive</p>
+                <p>Draw me into the doorway</p>
+                <p>Into the stormy</p>
+                <p>Dreams of the night</p>
+            </div>
+            <div class="verse">
+                <p>The danger on your lips</p>
+                <p>The taste I can't resist</p>
+                <p>Refreshing, overwhelming, unforgiving</p>
+            </div>
+            <div class="verse">
+                <p>Suck me, tearing the flesh out from me</p>
+                <p>And drink me like lemonade</p>
+                <p>It's getting late, but you gulp me down</p>
+                <p>Draw me into the doorway</p>
+                <p>Into the arms of a hurricane in the night</p>
+            </div>
+            <div class="verse">
+                <p>You're soft but I'm still drunk</p>
+                <p>Am I drowning or already sunk?</p>
+                <p>Is it fate or is it something else?</p>
+                <p>Something unforgiving?</p>
+            </div>
+            <div class="verse">
+                <p>Your touch is tonic</p>
+                <p>You take out my head</p>
+                <p>Without me there, it can't refrain from spinning</p>
+            </div>
+            <div class="verse">
+                <p>Draw me into the doorway</p>
+                <p>The city's alive with spies</p>
+                <p>And the threat of rain</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <!-- SONG 3: Questions                                             -->
+    <!-- ============================================================ -->
+    <section class="song-section container" id="questions">
+        <h2 class="song-title">Questions</h2>
+
+        <div class="player-container">
+            <!-- REPLACE THIS BLOCK with your SoundCloud embed once uploaded:
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23b0a175&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+            -->
+            <div class="player-placeholder">SoundCloud player — coming soon</div>
+        </div>
+
+        <div class="lyrics">
+            <div class="verse">
+                <p>Walk me through the courtyards of your war museum</p>
+                <p>To where you keep the arms and the ammo</p>
+                <p>Throw me all your questions like grenades</p>
+                <p>For all the chaos it creates</p>
+            </div>
+            <div class="verse">
+                <p>You can hide, break into a run</p>
+                <p>Hold my gaze or bite my tongue</p>
+                <p>But I'm exposed, vulnerable enough</p>
+                <p>To draw my breath and draw my gun</p>
+            </div>
+            <div class="verse">
+                <p>So, every little question leads</p>
+                <p>Somewhere you don't want to be</p>
+                <p>Knowing that your heart can beat</p>
+                <p>But violently</p>
+                <p>And I'm not a fighter</p>
+                <p>Nor a lover</p>
+                <p>I'm just faster to the draw</p>
+            </div>
+            <div class="verse">
+                <p>Of all the weapons in your armoury</p>
+                <p>Your languages, the little gifts you craft for me</p>
+                <p>Your lemon-scented kiss, and your widened eyes</p>
+                <p>It's your silence that frightens me the most</p>
+            </div>
+            <div class="verse">
+                <p>I should hide or break into a run</p>
+                <p>Hold your gaze or bite my tongue</p>
+                <p>But I'm exposed, vulnerable enough</p>
+                <p>To draw my breath and draw my gun</p>
+            </div>
+            <div class="verse">
+                <p>So, every little question frees</p>
+                <p>Answers that I think you need</p>
+                <p>Knowing that your heart can speak</p>
+                <p>But quietly</p>
+                <p>And I'm not a fighter</p>
+                <p>Nor a lover</p>
+                <p>I'm just open to the core</p>
+            </div>
+            <div class="verse">
+                <p>And all your questions</p>
+                <p>Those secret weapons</p>
+                <p>All my confessions</p>
+                <p>Give their blessings to the thought</p>
+            </div>
+            <div class="verse">
+                <p>I should hide or bite my tongue</p>
+                <p>But I'm alive enough</p>
+                <p>To draw my gun</p>
+            </div>
+            <div class="verse">
+                <p>So, every little shot reveals</p>
+                <p>Something that I think we feel</p>
+                <p>Knowing that your voice will grow</p>
+                <p>Inside of me</p>
+            </div>
+            <div class="verse">
+                <p>Your thousand questions</p>
+                <p>Are the secret weapons</p>
+                <p>You use to neutralise the choice</p>
+            </div>
+            <div class="verse">
+                <p>I am never heartless, just a hairline trigger</p>
+                <p>Looking irregardless for the bigger picture</p>
+                <p>Looking for the target in your eyes</p>
+                <p>Following the sound of your voice</p>
+            </div>
+            <div class="verse">
+                <p>And all your weapons</p>
+                <p>Your thousand questions</p>
+                <p>All my confessions</p>
+                <p>Are the charge that feeds the choice</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <!-- SONG 4: Lava                                                  -->
+    <!-- ============================================================ -->
+    <section class="song-section container" id="lava">
+        <h2 class="song-title">Lava</h2>
+
+        <div class="player-container">
+            <!-- REPLACE THIS BLOCK with your SoundCloud embed once uploaded:
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23b0a175&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+            -->
+            <div class="player-placeholder">SoundCloud player — coming soon</div>
+        </div>
+
+        <div class="lyrics">
+            <div class="verse">
+                <p>You were raised at the feet of danger</p>
+                <p>With lava in your veins</p>
+                <p>Watching, waiting for the end to come</p>
+                <p>For the fire to rain</p>
+                <p>Knowing you must destroy yourself</p>
+                <p>To find yourself</p>
+                <p>Again</p>
+            </div>
+            <div class="verse">
+                <p>Time will freeze even as it flows away</p>
+                <p>Like the lava</p>
+                <p>You will crease like tectonic lines</p>
+                <p>And feel the tremors after</p>
+            </div>
+            <div class="verse">
+                <p>Your eyes are fire</p>
+                <p>Your words are water</p>
+                <p>You are the flesh and I'm the altar</p>
+                <p>You are the town</p>
+                <p>And I am gravity</p>
+                <p>But our desire is not our enemy</p>
+            </div>
+            <div class="verse">
+                <p>Feel the heat even as you pull away</p>
+                <p>Feel the fear even as you beg for pain</p>
+                <p>Devour the space between</p>
+                <p>Like the lava</p>
+            </div>
+            <div class="verse">
+                <p>You will tease even as you peel away</p>
+                <p>All the layers from me</p>
+                <p>And lead me to the brink, to the hungry mouth</p>
+                <p>Of the crater</p>
+            </div>
+            <div class="verse">
+                <p>Your eyes are fire</p>
+                <p>Your words are water</p>
+                <p>We burn our bridges at the altar</p>
+                <p>I feel the heat</p>
+                <p>I hear the tremor</p>
+                <p>Together it dismantles me</p>
+            </div>
+            <div class="verse">
+                <p>Feel the heat even as you pull away</p>
+                <p>Feel the fear even as you beg for pain</p>
+                <p>Devour the space between</p>
+                <p>Like the lava</p>
+            </div>
+            <div class="verse">
+                <p>Close the space, even as you pull away</p>
+                <p>Beg for calm, even as you crave the taste</p>
+                <p>Let the feeling flow</p>
+                <p>Like the lava</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <footer>
+        <p>© 2026 Ned Stranger. All rights reserved.</p>
+        <p>Website design by Ned Stranger</p>
+    </footer>
+
+</body>
+</html>
