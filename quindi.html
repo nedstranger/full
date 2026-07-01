@@ -176,6 +176,81 @@
             opacity: 0.6;
         }
 
+        /* --- Password Gate --- */
+        #password-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: var(--color-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #password-gate h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+        }
+        #password-gate .gate-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 3rem;
+        }
+        #password-gate form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        #password-gate input[type="password"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(244, 244, 244, 0.3);
+            color: var(--color-light);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            padding: 0.5rem 0;
+            width: 220px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #password-gate input[type="password"]:focus {
+            border-bottom-color: var(--color-accent);
+        }
+        #password-gate button {
+            background: transparent;
+            border: 1px solid rgba(244, 244, 244, 0.3);
+            color: var(--color-light);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.75rem 2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-top: 0.5rem;
+        }
+        #password-gate button:hover {
+            background-color: rgba(244, 244, 244, 0.1);
+            border-color: var(--color-light);
+        }
+        #password-gate .gate-error {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #c0614a;
+            text-transform: uppercase;
+            min-height: 1.2em;
+        }
+
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .page-hero h1 {
@@ -197,6 +272,40 @@
     </style>
 </head>
 <body>
+
+    <div id="password-gate">
+        <h2>{quindi}</h2>
+        <p class="gate-subtitle">Private preview</p>
+        <form id="gate-form">
+            <input type="password" id="gate-input" placeholder="Password" autocomplete="off">
+            <p class="gate-error" id="gate-error"></p>
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+
+    <script>
+        (function () {
+            const HASH = '2365db8847afd3dd06cc74dab154b13db60601703fb97cc9358265342a3ac048';
+            const KEY = 'quindi_auth';
+            if (sessionStorage.getItem(KEY) === '1') {
+                document.getElementById('password-gate').style.display = 'none';
+                return;
+            }
+            document.getElementById('gate-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const input = document.getElementById('gate-input').value;
+                const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input));
+                const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+                if (hex === HASH) {
+                    sessionStorage.setItem(KEY, '1');
+                    document.getElementById('password-gate').style.display = 'none';
+                } else {
+                    document.getElementById('gate-error').textContent = 'Incorrect password';
+                    document.getElementById('gate-input').value = '';
+                }
+            });
+        })();
+    </script>
 
     <header>
         <a href="/" class="logo">Ned Stranger</a>
